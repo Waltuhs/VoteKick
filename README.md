@@ -1,6 +1,6 @@
 # VoteKick
-![downloads](https://img.shields.io/github/downloads/Walths/VoteKick/total?logo=github&style=for-the-badge)
-![ver](https://img.shields.io/github/v/release/Walths/VoteKick?include_prereleases&logo=github&style=for-the-badge)
+![downloads](https://img.shields.io/github/downloads/Waltuhs/VoteKick/total?logo=github&style=for-the-badge)
+![ver](https://img.shields.io/github/v/release/Waltuhs/VoteKick?include_prereleases&logo=github&style=for-the-badge)
 [![disc](https://img.shields.io/discord/123568150184921482?label=Discord&logo=discord&style=for-the-badge)](https://discord.gg/MQAcPFJRkR)
 ## A scp:sl Exiled plugin that introduces csgo style vote kicks into the game.
 
