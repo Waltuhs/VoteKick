@@ -2,7 +2,7 @@
 ![downloads](https://img.shields.io/github/downloads/Waltuhs/VoteKick/total?logo=github&style=for-the-badge)
 ![ver](https://img.shields.io/github/v/release/Waltuhs/VoteKick?include_prereleases&logo=github&style=for-the-badge)
 [![disc](https://img.shields.io/discord/1235681501849321482?label=Discord&logo=discord&style=for-the-badge)](https://discord.gg/MQAcPFJRkR)
-## A scp:sl Exiled plugin that introduces csgo style votekick system into the game.
+## A Scp:Sl Exiled plugin that introduces csgo style votekick system into the game.
 
 | Command | What it does |
 | --- | --- |
