@@ -12,7 +12,7 @@ namespace VoteKick
         public override string Author => "sexy waltuh";
         public override string Name => "VoteKick";
         public override string Prefix => "VK";
-        public override Version Version => new Version(1, 0, 0);
+        public override Version Version => new Version(1, 1, 0);
         private Dictionary<Player, Player> _voteKicksInProgress = new Dictionary<Player, Player>();
         private Dictionary<Player, bool> _votedPlayers = new Dictionary<Player, bool>();
         private HashSet<Player> _votedYes = new HashSet<Player>();
@@ -24,19 +24,29 @@ namespace VoteKick
 
         public override void OnEnabled()
         {
-            base.OnEnabled();
             Instance = this;
+            base.OnEnabled();
         }
 
         public override void OnDisabled()
         {
-            base.OnDisabled();
             Instance = null;
+            base.OnDisabled();
         }
 
         public bool IsVotekickInProgress => _voteKicksInProgress.Any();
         public int VoteYesCount => _votedYes.Count;
         public int VoteNoCount => _votedNo.Count;
+
+        public bool IsBlacklistedInitiator(Player player)
+        {
+            return Config.BlacklistedInitiators.Contains(player.UserId);
+        }
+
+        public bool IsBlacklistedTarget(Player player)
+        {
+            return Config.BlacklistedTargets.Contains(player.UserId) || Config.BlacklistedRoles.Contains(player.GroupName?.ToString() ?? string.Empty);
+        }
 
         public void StartVoteKick(Player initiator, Player target)
         {
@@ -84,6 +94,7 @@ namespace VoteKick
                 _voteTimeoutCoroutine = null;
             }
         }
+
 
         public IEnumerator<float> BroadcastVoteStatus()
         {

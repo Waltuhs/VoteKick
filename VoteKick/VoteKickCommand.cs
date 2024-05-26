@@ -4,7 +4,7 @@ using Exiled.API.Features;
 using CommandSystem;
 using RemoteAdmin;
 using VoteKick;
-using MEC; 
+using MEC;
 using System.Collections.Generic;
 
 namespace VotekickCommand
@@ -51,9 +51,15 @@ namespace VotekickCommand
                 return false;
             }
 
+            if (Plugin.Instance.IsBlacklistedInitiator(playersender))
+            {
+                response = "You are not allowed to start a votekick";
+                return false;
+            }
+
             if (arguments.Count < 2)
             {
-                response = "Usage: .votekick start <playername>";
+                response = "Usage: .votekick start <playername> OR .votekick <yes/no>";
                 return false;
             }
 
@@ -66,13 +72,17 @@ namespace VotekickCommand
                 return false;
             }
 
+            if (Plugin.Instance.IsBlacklistedTarget(target))
+            {
+                response = "This player cannot be votekicked";
+                return false;
+            }
+
             if (Plugin.Instance.IsVotekickInProgress)
             {
                 response = "There's already a votekick in progress";
                 return false;
             }
-
-            Log.Info($"{DateTime.Now} - {LastVoteKickTime}");
 
             if (DateTime.Now - LastVoteKickTime < VoteKickCooldown)
             {
@@ -104,7 +114,7 @@ namespace VotekickCommand
                 return false;
             }
 
-            if (Plugin.Instance.HasPlayerVoted(playersender)) 
+            if (Plugin.Instance.HasPlayerVoted(playersender))
             {
                 response = "You have already voted on this votekick";
                 return false;
